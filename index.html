@@ -7,31 +7,45 @@
 <title>Codomax | DevOps Project</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:#f5f8ff;color:#172b52;line-height:1.6}
-nav{background:#10264b;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
-nav strong{font-size:23px}
-nav a{color:white;text-decoration:none;margin-left:18px}
+nav{background:#10264b;color:white;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+nav strong{font-size:24px}
+nav a{color:white;text-decoration:none;margin-left:20px}
+nav a:hover{color:#75dcff}
 .hero{padding:75px 7%;color:white;background:linear-gradient(120deg,#123b82,#344bd2,#8046df);display:grid;grid-template-columns:1.2fr 1fr;gap:35px;align-items:center}
-.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.12;margin:15px 0}
+.eyebrow{letter-spacing:2px;color:#8ce5ff;font-size:14px;font-weight:bold}
+.hero h1{font-size:clamp(36px,5vw,58px);line-height:1.12;margin:18px 0}
 .hero h1 span{color:#76dcff}
-.hero p{font-size:17px;margin:20px 0}
-.btn{display:inline-block;background:#35a8ff;color:white;padding:13px 22px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:12px}
-.panel{background:#fff;color:#172b52;border-radius:22px;padding:28px;box-shadow:0 15px 40px #101d5533}
-.panel h2{margin-bottom:14px}
+.hero p{font-size:17px;margin:18px 0}
+.btn{display:inline-block;background:#35a8ff;color:white;padding:13px 23px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:12px;transition:.25s}
+.btn:hover{transform:translateY(-4px);background:#168de9;box-shadow:0 10px 24px #00174744}
+.panel{background:white;color:#172b52;border-radius:22px;padding:25px;box-shadow:0 18px 45px #101d5533;transition:.3s}
+.panel:hover{transform:translateY(-5px)}
+.panel h2{margin-bottom:16px}
 .pipeline{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.stage{background:#edf3ff;border-radius:14px;padding:15px 5px;text-align:center;font-weight:bold}
-.stage span{display:block;font-size:27px}
-section{padding:55px 7%;text-align:center}
+.stage{background:#edf3ff;border:1px solid transparent;border-radius:15px;padding:15px 5px;text-align:center;font-weight:bold;transition:transform .25s,box-shadow .25s,border-color .25s}
+.stage:hover{transform:translateY(-6px);box-shadow:0 10px 20px #354bd22a;border-color:#9cafff}
+.stage span{display:block;font-size:28px;margin-bottom:5px}
+.status{display:inline-flex;align-items:center;gap:8px;background:#e4fff1;color:#087a48;padding:7px 13px;border-radius:20px;font-size:13px;font-weight:bold;margin-top:16px}
+.dot{width:9px;height:9px;background:#10b981;border-radius:50%;box-shadow:0 0 0 4px #10b98122}
+section{padding:58px 7%;text-align:center}
 section h2{font-size:30px;margin-bottom:8px}
 .sub{color:#657695;margin-bottom:28px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
-.card{background:white;border:1px solid #e7ecf7;border-radius:17px;padding:25px 18px;box-shadow:0 7px 20px #142b520c}
-.card .emoji{font-size:35px}
-.card h3{margin:8px 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.card{background:white;border:1px solid #e7ecf7;border-radius:18px;padding:27px 18px;box-shadow:0 7px 20px #142b520c;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 35px #203c7820}
+.emoji{font-size:36px}
+.card h3{margin:10px 0}
 .card p{color:#61718e}
-.about{background:#e9f1ff}
-footer{background:#10264b;color:white;text-align:center;padding:28px}
-@media(max-width:700px){.hero{grid-template-columns:1fr;padding:48px 6%}.cards{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(2,1fr)}nav{padding:16px 5%}nav a{margin-left:5px}.hero h1{font-size:39px}}
+.about{background:linear-gradient(120deg,#eaf2ff,#f4edff)}
+.techs{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.tech{background:white;padding:10px 17px;border-radius:25px;box-shadow:0 4px 15px #142b520c;font-weight:bold}
+footer{background:#10264b;color:white;text-align:center;padding:30px 7%}
+footer p{color:#cfddf8;margin-top:8px}
+footer a{color:#8ce5ff;text-decoration:none}
+@media(max-width:750px){.hero{grid-template-columns:1fr;padding:48px 6%}.cards{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(2,1fr)}nav{padding:16px 5%}nav a{margin-left:8px}.hero h1{font-size:40px}section{padding:45px 6%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -42,11 +56,14 @@ footer{background:#10264b;color:white;text-align:center;padding:28px}
 
 <header class="hero" id="home">
 <div>
-<p> AUTOMATE • BUILD • DEPLOY • MONITOR</p>
+<p class="eyebrow">AUTOMATE • BUILD • DEPLOY • MONITOR</p>
 <h1>Welcome to My <span>DevOps Project!</span></h1>
-<p>A simple and modern DevOps project demonstrating automated workflows using GitHub Actions, Docker and GitHub Pages.</p>
+<p>Exploring a modern DevOps workflow with GitHub Actions, Docker and GitHub Pages. From source code to a published website, every step is part of my learning journey.</p>
 <a class="btn" href="https://github.com/bhavanasutagatti-cyber/codomax-module-5-devops" target="_blank" rel="noopener">View Source Code ↗</a>
+<br>
+<div class="status"><span class="dot"></span> Website published on GitHub Pages</div>
 </div>
+
 <div class="panel">
 <h2>🚀 My DevOps Pipeline</h2>
 <div class="pipeline">
@@ -57,33 +74,40 @@ footer{background:#10264b;color:white;text-align:center;padding:28px}
 <div class="stage"><span>☁️</span>Deploy</div>
 <div class="stage"><span>📊</span>Monitor</div>
 </div>
-<p style="margin-top:20px">From code to deployment — one step at a time.</p>
+<p style="margin-top:18px">From code to deployment — one step at a time.</p>
 </div>
 </header>
 
 <section id="features">
 <h2>Project Highlights ✨</h2>
-<p class="sub">Exploring the tools behind a modern DevOps workflow</p>
+<p class="sub">Tools and concepts explored in my DevOps learning journey</p>
 <div class="cards">
 <div class="card"><div class="emoji">🐙</div><h3>GitHub</h3><p>Version control and project collaboration.</p></div>
-<div class="card"><div class="emoji">⚙️</div><h3>Build & Test</h3><p>Automated checks with GitHub Actions.</p></div>
-<div class="card"><div class="emoji">🐳</div><h3>Docker</h3><p>Package a website into a Docker image.</p></div>
-<div class="card"><div class="emoji">☁️</div><h3>Deployment</h3><p>Publish the website with GitHub Pages.</p></div>
-<div class="card"><div class="emoji">📊</div><h3>Monitoring</h3><p>Review workflow results and logs.</p></div>
-<div class="card"><div class="emoji">🔐</div><h3>Configuration</h3><p>Learn environment settings and safer practices.</p></div>
+<div class="card"><div class="emoji">⚙️</div><h3>Build & Test</h3><p>Automated checks using GitHub Actions.</p></div>
+<div class="card"><div class="emoji">🐳</div><h3>Docker</h3><p>Building a Docker image for a website.</p></div>
+<div class="card"><div class="emoji">☁️</div><h3>Deployment</h3><p>Publishing a static website with GitHub Pages.</p></div>
+<div class="card"><div class="emoji">📊</div><h3>Monitoring</h3><p>Checking workflow results and reviewing logs.</p></div>
+<div class="card"><div class="emoji">🔐</div><h3>Configuration</h3><p>Environment variables and safer configuration practices.</p></div>
 </div>
 </section>
 
 <section class="about" id="about">
 <h2>About This Project</h2>
-<p class="sub">A hands-on learning project for Codomax Module 5.</p>
-<p>Learning DevOps through GitHub, continuous integration, Docker image building, website deployment and workflow monitoring.</p>
+<p class="sub">Codomax Module 5 — DevOps, CI/CD & Monitoring</p>
+<p>Hands-on practice with automated workflows, containerization, website publishing and basic monitoring concepts.</p>
+<div class="techs">
+<span class="tech">🐙 GitHub</span>
+<span class="tech">⚙️ GitHub Actions</span>
+<span class="tech">🐳 Docker</span>
+<span class="tech">🌐 GitHub Pages</span>
+<span class="tech">💻 HTML & CSS</span>
+</div>
 </section>
 
 <footer>
-<h3>Codomax | DevOps Learning Journey</h3>
-<p>Built with HTML, CSS, GitHub Actions, Docker and GitHub Pages.</p>
-<p>Keep learning. Keep building. Keep improving. 💙</p>
+<h3>☁ Codomax | DevOps Learning Journey</h3>
+<p>Learn • Build • Automate • Improve</p>
+<p><a href="https://github.com/bhavanasutagatti-cyber/codomax-module-5-devops" target="_blank" rel="noopener">Explore my GitHub repository ↗</a></p>
 </footer>
 </body>
 </html>
