@@ -1,30 +1,60 @@
 
-name: CI Pipeline
+name: Build Test Docker Deploy Monitor
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check Dockerfile
+      - name: Build website
         run: |
-          test -f Dockerfile
-          echo "Dockerfile found successfully"
+          echo "Building website..."
+          test -f index.html
 
-      - name: Validate environment example
+      - name: Test website
         run: |
-          test -f .env.example
-          echo "Environment configuration found"
+          test -s index.html
+          echo "Website file test passed"
 
       - name: Build Docker image
         run: docker build -t codomax-website .
 
-      - name: Pipeline success
-        run: echo "CI pipeline completed successfully!"
+      - name: Check Docker image
+        run: docker image inspect codomax-website
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment stage
+        run: |
+          echo "Build and Docker checks passed."
+          echo "Configure a hosting provider to deploy the website."
+
+  monitor:
+    if: always()
+    needs: [build-test, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Monitor pipeline result
+        env:
+          BUILD_RESULT: ${{ needs.build-test.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+        run: |
+          echo "Build and test: $BUILD_RESULT"
+          echo "Deployment stage: $DEPLOY_RESULT"
+          echo "Monitoring completed"
+          test "$BUILD_RESULT" = "success"
