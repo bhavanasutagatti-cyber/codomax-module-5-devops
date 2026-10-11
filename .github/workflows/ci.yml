@@ -13,11 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check project files
+      - name: Check Dockerfile
         run: |
-          echo "Checking project files..."
-          ls -la
-          test -f index.html || echo "No index.html found"
+          test -f Dockerfile
+          echo "Dockerfile found successfully"
+
+      - name: Validate environment example
+        run: |
+          test -f .env.example
+          echo "Environment configuration found"
+
+      - name: Build Docker image
+        run: docker build -t codomax-website .
 
       - name: Pipeline success
         run: echo "CI pipeline completed successfully!"
